@@ -1,0 +1,10 @@
+# Node folder
+node_modules
+# Build folders
+build
+dist
+js
+# Environment Variables
+.env
+# Tests Coverage folder
+coverage
