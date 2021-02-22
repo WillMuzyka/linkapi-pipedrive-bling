@@ -4,12 +4,19 @@ import './container';
 import './database';
 
 import cors from 'cors';
+import cron from 'node-cron';
 import { errors } from 'celebrate';
 import express, { Request, Response, NextFunction } from 'express';
 
 import routes from './routes';
+import UpdateDealsBlingService from './services/UpdateDealsBlingService';
 
 const app = express();
+
+cron.schedule('0 8-18 * * *', async () => {
+  const updateDealsBling = new UpdateDealsBlingService();
+  await updateDealsBling.execute();
+});
 
 app.use(cors());
 app.use(express.json());
