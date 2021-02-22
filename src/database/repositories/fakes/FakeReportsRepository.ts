@@ -1,5 +1,3 @@
-import { ObjectID } from 'mongodb';
-
 import IReportsRepository from '../IReportsRepository';
 
 import Report from '../../schemas/Report';
@@ -12,7 +10,7 @@ implements IReportsRepository {
     const report = new Report();
 
     Object.assign(report, {
-      id: new ObjectID(),
+      id: 1,
       date,
       sum,
     });

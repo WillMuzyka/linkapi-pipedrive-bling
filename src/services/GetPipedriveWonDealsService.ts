@@ -67,8 +67,8 @@ class GetPipedriveWonDeals {
           numero: deal.id,
           cliente: {
             nome: deal.person_id.name,
-            email: deal.person_id.email.value || '',
-            fone: deal.person_id.phone.value || '',
+            email: deal.person_id.email.value,
+            fone: deal.person_id.phone.value,
           },
           itens: relevantProductData,
           sum: deal.value,

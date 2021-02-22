@@ -36,6 +36,7 @@ class UpdateDealsBlingService {
 
   public async execute(): Promise<any> {
     const newDeals = await this.getDealsNotOnBlingYet();
+    if (newDeals.length === 0) return { message: 'Nothing to be updated' };
 
     const response = [];
 
@@ -68,7 +69,7 @@ class UpdateDealsBlingService {
         },
       },
     );
-    const blingDeals = blingResponse.data.retorno.pedidos || [];
+    const blingDeals = blingResponse.data.retorno?.pedidos || [];
 
     // Filter Pipedrive won Deals that are not on Bling yet
     const newDeals = wonDeals.filter((wonDeal) => {

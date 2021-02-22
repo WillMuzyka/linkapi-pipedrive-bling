@@ -8,6 +8,5 @@ export const isToday = (date: Date): boolean => {
 
 export const formattedTodayDate = (): string => {
   const today = new Date();
-  today.setHours(today.getHours() - 3);
-  return `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`;
+  return `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
 };
