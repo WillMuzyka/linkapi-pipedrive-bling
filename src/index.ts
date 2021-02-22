@@ -1,4 +1,7 @@
 import 'dotenv/config';
+import 'reflect-metadata';
+import './container';
+import './database';
 
 import cors from 'cors';
 import { errors } from 'celebrate';

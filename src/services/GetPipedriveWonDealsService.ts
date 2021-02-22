@@ -13,6 +13,7 @@ interface IDealInfo {
     };
   }
   won_time: string;
+  value: number;
 }
 
 interface IProductInfo {
@@ -40,6 +41,7 @@ interface IPipedriveWonDeals {
         vlr_unit: number;
       }
     }[],
+    sum: number,
   },
 }
 
@@ -69,6 +71,7 @@ class GetPipedriveWonDeals {
             fone: deal.person_id.phone.value || '',
           },
           itens: relevantProductData,
+          sum: deal.value,
         },
       };
     }));
