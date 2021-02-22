@@ -25,8 +25,6 @@ services:
     volumes:
       - linkapi-mongodb-data:/data
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
       MONGO_DB: ${DB_NAME}
     networks:
       - app-connect
