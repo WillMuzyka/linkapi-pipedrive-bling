@@ -1,13 +1,17 @@
+import 'dotenv/config';
+
 import cors from 'cors';
 import { errors } from 'celebrate';
 import express, { Request, Response, NextFunction } from 'express';
+
+import routes from './routes';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/', (_, res) => (res.json({ message: 'Server ok' })));
+app.use(routes);
 
 app.use(errors());
 
