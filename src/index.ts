@@ -8,14 +8,22 @@ import cron from 'node-cron';
 import { errors } from 'celebrate';
 import express, { Request, Response, NextFunction } from 'express';
 
+import { container } from 'tsyringe';
+
 import routes from './routes';
 import UpdateDealsBlingService from './services/UpdateDealsBlingService';
+import PostReportOnDBService from './services/PostReportOnDBService';
 
 const app = express();
 
 cron.schedule('0 8-18 * * *', async () => {
   const updateDealsBling = new UpdateDealsBlingService();
   await updateDealsBling.execute();
+});
+
+cron.schedule('30 18 * * *', async () => {
+  const postReportOnDB = container.resolve(PostReportOnDBService);
+  await postReportOnDB.execute();
 });
 
 app.use(cors());

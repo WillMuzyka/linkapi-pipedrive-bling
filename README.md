@@ -16,6 +16,7 @@ Project LinkAPI
 <a  href="#hourglass_flowing_sand-installation">Installation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a  href="#book-environment-variables">Environment Variables</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a  href="#whale2-docker">Docker</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#motorway-routes">Routes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a  href="#cop-remarks">Remarks</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a  href="#memo-license">License</a>
 </p>
@@ -72,6 +73,18 @@ To start the application, run `docker-compose up -d`. It will build (if needed) 
 To stop, run `docker-compose stop`.
 
 Just a small remark on docker configuration: on some local tests, the first run sometimes did not configure the database correctly. Even though the backend awaits the database container to be running before starting, sometimes the database did not completely initialize before the backend container tries to execute the migrations. If this happens, run the command to stop and start the containers again.
+
+## :motorway: Routes
+
+This project has the following routes, with the designed behavior:
+* GET /all
+	* Returns all the database entries. Each entry has a unique ID, the sum value of the day and the date;
+* GET /deals
+	* Returns all the deals from Pipedrive that contains the status 'won';
+* POST /database
+	* Force the input of an entry on the database containing the sum of values of the current day;
+* PUT /bling
+	* Force the update of deals on bling, based on Pipedrive's deal;
 
 ## :cop: Remarks
 
