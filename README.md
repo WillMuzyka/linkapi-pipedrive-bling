@@ -77,12 +77,16 @@ Just a small remark on docker configuration: on some local tests, the first run 
 ## :motorway: Routes
 
 This project has the following routes, with the designed behavior:
-* GET /all
+* GET /database/all
 	* Returns all the database entries. Each entry has a unique ID, the sum value of the day and the date;
-* GET /deals
-	* Returns all the deals from Pipedrive that contains the status 'won';
+* GET /database/:days
+	* Returns all the database entries that are from a number of :days ago. For example, if the value of :days is 3, it will return the reports from 3 days ago until now. Each entry has a unique ID, the sum value of the day and the date;
 * POST /database
 	* Force the input of an entry on the database containing the sum of values of the current day;
+
+Extra routes:
+* GET /deals
+	* Returns all the deals from Pipedrive that contains the status 'won';
 * PUT /bling
 	* Force the update of deals on bling, based on Pipedrive's deal;
 

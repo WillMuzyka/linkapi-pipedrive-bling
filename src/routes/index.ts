@@ -1,20 +1,11 @@
 import { Router } from 'express';
 import DealsController from '../controllers/DealsController';
-import DatabaseController from '../controllers/DatabaseController';
+import databaseRoutes from './database.routes';
 
 const router = Router();
 const dealsController = new DealsController();
-const databaseController = new DatabaseController();
 
-router.get(
-  '/all',
-  databaseController.index,
-);
-
-router.post(
-  '/database',
-  databaseController.post,
-);
+router.use('/database', databaseRoutes);
 
 router.get(
   '/deals',

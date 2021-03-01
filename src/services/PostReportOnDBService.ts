@@ -14,7 +14,19 @@ class PostReportOnDBService {
     const getPipedriveWonDeals = new GetPipedriveWonDealsService();
     const wonDeals = await getPipedriveWonDeals.execute();
     const sum = wonDeals.reduce((reduceSum, deal) => reduceSum + deal.pedido.sum, 0);
-    const reports = await this.ReportsRepository.create(new Date(), sum);
+    const date = new Date();
+    date.setHours(0, 0, 0, 0);
+
+    const todayReport = await this.ReportsRepository.findByDaysAgo(1);
+    if (todayReport[0]) {
+      const updatedReport = await this.ReportsRepository.update({
+        ...todayReport[0],
+        sum,
+      });
+      return updatedReport;
+    }
+
+    const reports = await this.ReportsRepository.create(date, sum);
     return reports;
   }
 }
